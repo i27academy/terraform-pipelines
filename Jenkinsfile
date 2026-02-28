@@ -31,6 +31,7 @@ pipeline {
         stage ('plan') {
             steps {
                 echo "Executing the plan for terraform "
+                sh "terraform plan"
             }
         }
         stage ('apply') {
