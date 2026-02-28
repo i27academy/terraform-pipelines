@@ -21,7 +21,7 @@ module "subnet" {
 
 # ------------------------- GCE module -------------------------
 module "gce" {
-    source = "git::https://github.com/devopswithcloud/i27-terraform-b25-modules.git//subnet?ref=v1.0.0"
+    source = "git::https://github.com/devopswithcloud/i27-terraform-b25-modules.git//gce?ref=v1.0.0"
     vm_name = var.local_vm_name
     machine_type = var.local_machine_type
     zone = var.local_zone
