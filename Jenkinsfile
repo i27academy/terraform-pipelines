@@ -3,7 +3,7 @@ pipeline {
     agent {
         label 'terraform-slave'
     }
-    parmeters {
+    parameters {
         choice (
             name: 'ENVIRONMENT',
             choices: ['dev', 'test', 'stage', 'prod'],
