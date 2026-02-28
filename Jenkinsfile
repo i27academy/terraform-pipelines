@@ -3,6 +3,13 @@ pipeline {
     agent {
         label 'terraform-slave'
     }
+    parmeters {
+        choice (
+            name: 'ENVIRONMENT',
+            choices: ['dev', 'test', 'stage', 'prod']
+            description: 'Choose the env to deploy'
+        )
+    }
     environment {
         GCS_BUCKET = "proven-wavelet-481608-k1-cdn"
         GOOGLE_APPLICATION_CREDENTIALS = "${WORKSPACE}/sa-key.json"
@@ -31,7 +38,7 @@ pipeline {
         stage ('plan') {
             steps {
                 echo "Executing the plan for terraform "
-                sh "terraform plan"
+                //sh "terraform plan -var-file=dev.tfvars"
             }
         }
         stage ('apply') {
