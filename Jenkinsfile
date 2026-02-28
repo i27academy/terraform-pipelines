@@ -13,6 +13,7 @@ pipeline {
     environment {
         GCS_BUCKET = "proven-wavelet-481608-k1-cdn"
         GOOGLE_APPLICATION_CREDENTIALS = "${WORKSPACE}/sa-key.json"
+        TFVARS_FILE = "${params.ENVIRONMENT}.tfvars"
     }
     stages {
         stage ('auth') {
@@ -38,7 +39,7 @@ pipeline {
         stage ('plan') {
             steps {
                 echo "Executing the plan for terraform "
-                //sh "terraform plan -var-file=dev.tfvars"
+                sh "terraform plan -var-file=${env.TFVARS_FILE}"
             }
         }
         stage ('apply') {
