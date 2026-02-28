@@ -6,7 +6,7 @@ pipeline {
     parmeters {
         choice (
             name: 'ENVIRONMENT',
-            choices: ['dev', 'test', 'stage', 'prod']
+            choices: ['dev', 'test', 'stage', 'prod'],
             description: 'Choose the env to deploy'
         )
     }
