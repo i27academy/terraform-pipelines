@@ -10,7 +10,9 @@ pipeline {
         stage ('init') {
             steps {
                 echo "Initialising the terraform"
-                sh 'terraform init --backend-config="bucket=${env.GCS_BUCKET}" --backend-config="prefix=state_folder"'
+                sh """
+                    terraform init --backend-config="bucket=${env.GCS_BUCKET}" --backend-config="prefix=statefolder"
+                """
             }
         }
         stage ('plan') {
