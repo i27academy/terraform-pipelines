@@ -26,10 +26,7 @@ variable "local_subnet_cidr" {
   description = "CIDR range for the subnet"
   type        = string
 }
-variable "local_vpc_id" {
-  description = "ID of the VPC where the subnet will be created"
-  type        = string
-}
+
 
 # ------------------------- GCE variables -------------------------
 variable "local_vm_name" {
