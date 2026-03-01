@@ -9,6 +9,10 @@ pipeline {
             choices: ['dev', 'test', 'stage', 'prod'],
             description: 'Choose the env to deploy'
         )
+        choice (
+            name: 'ACTION',
+            choices: ['validate\ninit\nplan\napply\ndestroy']
+        )
     }
     environment {
         GCS_BUCKET = "proven-wavelet-481608-k1-cdn"
