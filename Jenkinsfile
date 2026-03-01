@@ -11,7 +11,7 @@ pipeline {
         )
         choice (
             name: 'ACTION',
-            choices: ['validate\ninit\nplan\napply\ndestroy']
+            choices: 'validate\ninit\nplan\napply\ndestroy'
         )
     }
     environment {
