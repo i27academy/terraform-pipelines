@@ -41,18 +41,33 @@ pipeline {
             }
         }
         stage ('plan') {
+            when {
+                expression {
+                    params.ACTION == 'plan'
+                }
+            }
             steps {
                 echo "Executing the plan for terraform "
                 sh "terraform plan -var-file=${env.TFVARS_FILE}"
             }
         }
         stage ('apply') {
+            when {
+                expression {
+                    params.ACTION == 'apply'
+                }
+            }
             steps {
                 echo "Applying terraform infra"
                 sh "terraform apply -var-file=${env.TFVARS_FILE} --auto-approve"
             }
         }
         stage ('destroy') {
+            when {
+                expression {
+                    params.ACTION == 'destroy'
+                }
+            }
             steps {
                 echo "Destroying the infra"
                 sh "terraform destroy -var-file=${env.TFVARS_FILE} --auto-approve"
