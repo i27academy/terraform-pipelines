@@ -45,11 +45,13 @@ pipeline {
         stage ('apply') {
             steps {
                 echo "Applying terraform infra"
+                sh "terraform apply -var-file=${env.TFVARS_FILE} --auto-approve"
             }
         }
         stage ('destroy') {
             steps {
                 echo "Destroying the infra"
+                sh "terraform destroy -var-file=${env.TFVARS_FILE} --auto-approve"
             }
         }
     }
