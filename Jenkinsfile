@@ -58,6 +58,10 @@ pipeline {
                 }
             }
             steps {
+                // abort if the input is not provided within 300 SECONDS 
+                timeout (time: 300, unit: 'SECONDS') {
+                    input message: "Do you want to apply the changes ?", ok: "yes", submitter: 'i27academy,i27sre'
+                }
                 echo "Applying terraform infra"
                 sh "terraform apply -var-file=${env.TFVARS_FILE} --auto-approve"
             }
@@ -69,6 +73,9 @@ pipeline {
                 }
             }
             steps {
+                timeout (time: 300, unit: 'SECONDS') {
+                    input message: "Do you want to Destroy the Infra ?", ok: "yes", submitter: 'i27academy,i27sre'
+                }
                 echo "Destroying the infra"
                 sh "terraform destroy -var-file=${env.TFVARS_FILE} --auto-approve"
             }
